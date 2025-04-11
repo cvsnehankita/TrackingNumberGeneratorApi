@@ -1,19 +1,17 @@
 package com.tracking.generator.controller;
 
-import com.tracking.generator.entity.TrackingRequest;
+import com.tracking.generator.entity.TrackingNumberResponse;
+import com.tracking.generator.entity.TrackingNumberRequest;
 import com.tracking.generator.service.TrackingApiService;
-import jakarta.validation.constraints.Max;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.math.BigDecimal;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
 @RestController
@@ -24,7 +22,7 @@ public class TrackingApiController {
     @Autowired
     TrackingApiService trackingApiService;
     @GetMapping
-    public String getTrackingApi (
+    public ResponseEntity<TrackingNumberResponse> getTrackingApi (
             @RequestParam String origin_country_id,
             @RequestParam String destination_country_id,
             @RequestParam Integer weight,
@@ -34,16 +32,15 @@ public class TrackingApiController {
             @RequestParam String customer_name,
             @RequestParam String customer_slug
     ) throws ParseException {
-        TrackingRequest request = new TrackingRequest();
+        TrackingNumberRequest request = new TrackingNumberRequest();
         request.setOriginCountryId(origin_country_id);
         request.setDestinationCountryId(destination_country_id);
         request.setWeight(BigDecimal.valueOf(weight));
-        SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyyy");
         request.setCreatedAt(ZonedDateTime.now());
         request.setCustomerId(customer_id);
         request.setCreatedBy(created_by);
         request.setCustomerName(customer_name);
         request.setCustomerSlug(customer_slug);
-        return trackingApiService.getTrackingNumber(request);
+        return ResponseEntity.ok(trackingApiService.getTrackingNumber(request));
     }
 }

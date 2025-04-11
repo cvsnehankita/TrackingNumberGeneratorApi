@@ -11,16 +11,15 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 @Getter
 @Entity
 @Data
 @Setter
-public class TrackingRequest {
+public class TrackingNumberRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer requestId;
 
     @Size(min = 2, max = 2, message = "Origin country code must be 2 letters (ISO Alpha-2)")
     @Pattern(regexp = "^[A-Z]{2}$", message = "Origin country code must be uppercase ISO Alpha-2")
@@ -46,13 +45,15 @@ public class TrackingRequest {
     private String customerId;
 
     @NotNull
+    @NotBlank
+    @Size(min = 3, message = "Please enter a valid customer name at least 3 letters long.")
     private String customerName;
 
     @NotNull
     @Pattern(regexp = "^[a-z0-9]+(?:-[a-z0-9]+)*$", message = "The customer’s name in slug-case/kebab-case (e.g. redbox-logistics)")
     private String customerSlug;
 
-    public TrackingRequest() {
+    public TrackingNumberRequest() {
     }
 
     public String getOriginCountryId() {
