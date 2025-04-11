@@ -13,9 +13,9 @@ public class JPAConfig {
         return args -> {
             if(repository.count() == 0){
                 repository.save(new Country("US", "United States"));
-                repository.save(new Country("IND", "India"));
-                repository.save(new Country("KOR", "South Korea"));
-                repository.save(new Country("MYR", "Malaysia"));
+                repository.save(new Country("IN", "India"));
+                repository.save(new Country("KR", "South Korea"));
+                repository.save(new Country("MY", "Malaysia"));
             }
         };
     }

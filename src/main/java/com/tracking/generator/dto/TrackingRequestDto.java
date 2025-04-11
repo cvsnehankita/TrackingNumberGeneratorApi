@@ -7,11 +7,11 @@ import jakarta.validation.constraints.Size;
 public class TrackingRequestDto {
     @NotNull
     @NotBlank
-    @Size(max = 3, message = "Country code must be at most 3 characters long.")
+    @Size(max = 2, message = "Country code must be 2 letters ISO 3166-1 alpha-2 format code.")
     private String orgin_country_id;
     @NotNull
     @NotBlank
-    @Size(max = 3, message = "Country code must be at most 3 characters long.")
+    @Size(max = 2, message = "Country code must be 2 letters ISO 3166-1 alpha-2 format code.")
     private String destination_country_id;
     @NotNull
     @NotBlank
