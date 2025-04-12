@@ -18,6 +18,11 @@ import org.springframework.web.bind.annotation.*;
  * Endpoints:
  * POST //country/add – Add a new country
  * GET //country/get/{code} – Get country details by code</li>
+ * Example for request body for add post request:
+ * {
+ *     "code": "UK",
+ *     "countryName": "United Kingdom"
+ * }
  *
  * @author Snehankita
  * @version 1.0
