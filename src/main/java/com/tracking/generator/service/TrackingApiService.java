@@ -6,6 +6,15 @@ import com.tracking.generator.repository.TrackingNumberRepository;
 import com.tracking.generator.util.TrackingNumberGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+/**
+ * Service class responsible for generating unique tracking numbers
+ * based on customer details and timestamp. It also saves every request with the request ID.
+ *
+ * @author Snehankita C
+ * @version 1.0
+ * @since 2025-04-11
+ */
 @Service
 public class TrackingApiService {
     @Autowired
@@ -13,9 +22,8 @@ public class TrackingApiService {
 
     @Autowired
     TrackingNumberRepository repository;
-    public String addTrackingRequest(TrackingNumberRequest request){
+    public void addTrackingRequest(TrackingNumberRequest request){
         repository.save(request);
-        return "Tracking request saved successfully";
     }
     public TrackingNumberResponse getTrackingNumber(TrackingNumberRequest request){
         addTrackingRequest(request);

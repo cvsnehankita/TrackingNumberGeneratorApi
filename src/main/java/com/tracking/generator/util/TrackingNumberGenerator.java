@@ -14,7 +14,7 @@ public class TrackingNumberGenerator {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hash = digest.digest(baseRequest.getBytes(StandardCharsets.UTF_8));
             return Base64.getUrlEncoder().encodeToString(hash).substring(0, 16).toUpperCase().replaceAll("[^A-Z0-9]", "");
-        }catch(Exception e){
+        } catch(Exception e){
             throw new RuntimeException("Failed to generate the Tracking Number.", e);
         }
     }
