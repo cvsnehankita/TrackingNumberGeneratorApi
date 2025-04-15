@@ -36,6 +36,8 @@ Backend is deployed on Heroku for testing
 
 http://localhost:8080/actuator
 http://localhost:8080/actuator/health
+http://localhost:8080/country/add
+http://localhost:8080/country/get/IN
 http://localhost:8080/next-tracking-number?origin_country_id=IN&destination_country_id=US&weight=56&created_at=&customer_id=de619854-b59b-425e-9db4-943979e1bd49&customer_name=RedBox Logi&customer_slug=redbox-logistics&created_by=Sneha
 
 Repository
